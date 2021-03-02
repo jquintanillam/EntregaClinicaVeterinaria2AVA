@@ -26,14 +26,14 @@ public class Perro extends Mascota{
     }
 
 	/**
-	 * @return la función que tiene el perro
+	 * @return la funcion que tiene el perro
 	 */
 	public String getFuncion() {
 		return funcion;
 	}
 
 	/**
-	 * @param entrada de la funcion que tendrá el perro
+	 * @param entrada de la funcion que tendro el perro
 	 */
 	public void setFuncion(String funcion) {
 		this.funcion = funcion;

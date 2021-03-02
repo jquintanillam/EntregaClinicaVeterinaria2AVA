@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"gestion","c":"Perro","l":"getFuncion()"},{"p":"gestion","c":"Perro","l":"Perro(long, String, int, String, Persona, String)","url":"%3Cinit%3E(long,java.lang.String,int,java.lang.String,gestion.Persona,java.lang.String)"},{"p":"gestion","c":"Perro","l":"setFuncion(String)","url":"setFuncion(java.lang.String)"}]
