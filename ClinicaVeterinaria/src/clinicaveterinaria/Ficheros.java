@@ -24,11 +24,12 @@ public class Ficheros {
 	private byte array[] = null;
     private ByteArrayInputStream leer = null;
     private ObjectInputStream entrada = null;
+	private String rutaCliente;
 	
     public void guardarFicheroClientes(ArrayList<Persona> clientes) {
     	try {
-            // Creamos o abrimos un nuevo archivo
-            archivo = new RandomAccessFile("Clientes.dat", "rw");             
+            rutaCliente = "Clientes.dat";
+			archivo = new RandomAccessFile(rutaCliente, "rw");             
             // Ponemos el puntero al final del archivo
             archivo.seek(archivo.length());
              

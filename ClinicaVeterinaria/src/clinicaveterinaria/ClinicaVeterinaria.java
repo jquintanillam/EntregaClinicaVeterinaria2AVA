@@ -11,7 +11,9 @@ import gestion.*;
  */
 public class ClinicaVeterinaria {
 
-    /**
+    private static final String EXCEPCIONENTERO = "Has causado una excepciï¿½n porque no has entrado un nï¿½mero entero, gracias";
+
+	/**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
@@ -23,7 +25,7 @@ public class ClinicaVeterinaria {
         Ficheros f = new Ficheros();
 
         //Clientes iniciales
-        Persona pepa = new Persona("Pepa", "Navarro García", "21333412P", 61);
+        Persona pepa = new Persona("Pepa", "Navarro Garcï¿½a", "21333412P", 61);
         clientes.add(pepa);
         Persona luna = new Persona("Luna", "Guerrero Cano", "25355471X", 46);
         clientes.add(luna);
@@ -32,43 +34,44 @@ public class ClinicaVeterinaria {
         f.guardarFicheroClientes(clientes);
 
         //Mascotas iniciales
-        //ID, String nombre, int edad, String raza, Persona duenyo, float peso || String función
+        //ID, String nombre, int edad, String raza, Persona duenyo, float peso || String funciï¿½n
         Cerdo oink1 = new Cerdo(1, "Valiente", 2, "Vietnamita", blanca, 12.50f);
         listaMascotas.add(oink1);
         Cerdo oink2 = new Cerdo(2, "Babe", 10, "Europeo", blanca, 100.75f);
         listaMascotas.add(oink2);
-        Perro guau1 = new Perro(3, "GosPolicia", 7, "Pastor Alemán", luna, "policia");
+        Perro guau1 = new Perro(3, "GosPolicia", 7, "Pastor Alemï¿½n", luna, "policia");
         listaMascotas.add(guau1);
-        Perro guau2 = new Perro(4, "Gosset", 1, "Breton", pepa, "compañía");
+        Perro guau2 = new Perro(4, "Gosset", 1, "Breton", pepa, "compaï¿½ï¿½a");
         listaMascotas.add(guau2);
         f.guardarFicheroMascotas(listaMascotas);
         
-        //Menú
+        //Menï¿½
         do {
         	System.out.println("=====================================================");
-            System.out.println("¿Qué quieres hacer?");
-            System.out.println("1. Añadir un nuevo cliente");
-            System.out.println("2. Añadir una nueva mascota para un cliente existente");
-            System.out.println("3. Mostrar todos los dueños");
+            System.out.println("ï¿½Quï¿½ quieres hacer?");
+            System.out.println("1. Aï¿½adir un nuevo cliente");
+            System.out.println("2. Aï¿½adir una nueva mascota para un cliente existente");
+            System.out.println("3. Mostrar todos los dueï¿½os");
             System.out.println("4. Mostrar todas las mascotas");
-            System.out.println("5. Guardar la información de mascotas en ficheros");
-            System.out.println("6. Guardar la información de clientes en ficheros");            
+            System.out.println("5. Guardar la informaciï¿½n de mascotas en ficheros");
+            System.out.println("6. Guardar la informaciï¿½n de clientes en ficheros");            
             System.out.println("7. Salir");
             System.out.println("=====================================================");
             try {
                 numero = Integer.parseInt(teclado.readLine());
             } catch (IOException e) {
-                System.err.println("Vaya, un error de entrada/salida... qué raro");
+                System.err.println("Vaya, un error de entrada/salida... quï¿½ raro");
             } catch (NumberFormatException e) {
-                System.err.println("Has causado una excepción porque no has entrado un número entero, gracias");
+                System.err.println(EXCEPCIONENTERO);
             }
 
-            //Seleccionaremos la opción
-            switch (numero) {
+            //Seleccionaremos la opciï¿½n
+            String nomCliente = "Introduce el nombre";
+			switch (numero) {
                 case 1:
                     //CLIENTE NUEVO
                     System.out.println("INTRODUCIMOS EL CLIENTE");
-                    System.out.println("Introduce el nombre");
+                    System.out.println(nomCliente);
                     String nombre = teclado.readLine();
                     System.out.println("Introduce los apellidos");
                     String apellidos = teclado.readLine();
@@ -79,7 +82,7 @@ public class ClinicaVeterinaria {
                     try {
                         edad = Integer.parseInt(teclado.readLine());
                     } catch (Exception e) {
-                        System.err.println("Has causado una excepción porque no has entrado un número entero, gracias");
+                        System.err.println(EXCEPCIONENTERO);
                         return;
                     }
                     Persona p1 = new Persona(nombre, apellidos, dni, edad);
@@ -87,35 +90,35 @@ public class ClinicaVeterinaria {
                     break;
 
                 case 2:
-                    //CLIENTE EXISTENTE, PRIMERO LO HABREMOS LISTADO CON LA OPCIÓN 3
+                    //CLIENTE EXISTENTE, PRIMERO LO HABREMOS LISTADO CON LA OPCIï¿½N 3
                     System.out.println("INTRODUCIMOS EL CLIENTE");
-                    System.out.println("Introduce el número de cliente");
+                    System.out.println("Introduce el nï¿½mero de cliente");
                     int indice = 0;
                     try {
                         indice = Integer.parseInt(teclado.readLine());
                     } catch (Exception e) {
-                        System.err.println("Has causado una excepción porque no has entrado un número entero, gracias");
+                        System.err.println(EXCEPCIONENTERO);
                         return;
                     }
                     Persona p2 = null;
                     try {
                         p2 = clientes.get(indice);
                     } catch (IndexOutOfBoundsException e) {
-                        System.err.println("Has causado una excepción porque el cliente no existe");
+                        System.err.println("Has causado una excepciï¿½n porque el cliente no existe");
                         return;
                     }
 
                     //MASCOTA NUEVA
                     System.out.println("AHORA INTRODUCIMOS LA MASCOTA");
-                    System.out.println("Introduce la identificación");
+                    System.out.println("Introduce la identificaciï¿½n");
                     long ID = 0;
                     try {
                         ID = Long.parseLong(teclado.readLine());
                     } catch (Exception e) {
-                        System.err.println("Has causado una excepción porque no has entrado un número entero, gracias");
+                        System.err.println(EXCEPCIONENTERO);
                         return;
                     }
-                    System.out.println("Introduce el nombre");
+                    System.out.println(nomCliente);
                     nombre = teclado.readLine();
                     System.out.println("Introduce la raza");
                     String raza = teclado.readLine();
@@ -124,7 +127,7 @@ public class ClinicaVeterinaria {
                     try {
                         edad = Integer.parseInt(teclado.readLine());
                     } catch (Exception e) {
-                        System.err.println("Has causado una excepción porque no has entrado un número entero, gracias");
+                        System.err.println(EXCEPCIONENTERO);
                         return;
                     }
 
@@ -136,9 +139,9 @@ public class ClinicaVeterinaria {
                     try {
                         indiceM = Integer.parseInt(teclado.readLine());
                     } catch (IOException e) {
-                        System.err.println("Vaya, un error de entrada/salida... qué raro");
+                        System.err.println("Vaya, un error de entrada/salida... quï¿½ raro");
                     } catch (NumberFormatException e) {
-                        System.err.println("Has causado una excepción porque no has entrado un número entero, gracias");
+                        System.err.println(EXCEPCIONENTERO);
                         return;
                     }
 
@@ -150,14 +153,14 @@ public class ClinicaVeterinaria {
                             try {
                                 peso = Float.parseFloat(teclado.readLine());
                             } catch (Exception e) {
-                                System.err.println("Has causado una excepción porque no has entrado un número entero, gracias");
+                                System.err.println(EXCEPCIONENTERO);
                                 return;
                             }
                             m1 = new Cerdo(ID, nombre, edad, raza, p2, peso);
                             break;
                         case 2:
                             String funcion = "";
-                            System.out.println("Introduce la función del perro o la perra");
+                            System.out.println("Introduce la funciï¿½n del perro o la perra");
                             funcion = teclado.readLine();
                             m1 = new Perro(ID, nombre, edad, raza, p2, funcion);
                             break;
@@ -167,7 +170,7 @@ public class ClinicaVeterinaria {
                             try {
                             	gradosalvaje = Float.parseFloat(teclado.readLine());
                             } catch (Exception e) {
-                                System.err.println("Has causado una excepción porque no has entrado un número entero, gracias");
+                                System.err.println(EXCEPCIONENTERO);
                                 return;
                             }
                             m1 = new Cosita(ID, nombre, edad, raza, p2, gradosalvaje);
@@ -181,12 +184,12 @@ public class ClinicaVeterinaria {
 
                 case 3:
                     for (Persona p : clientes) {
-                        System.out.println("Número Cliente: " + clientes.indexOf(p) + " --- DATOS: " + p.toString());
+                        System.out.println("Nï¿½mero Cliente: " + clientes.indexOf(p) + " --- DATOS: " + p.toString());
                     }
                     break;
                 case 4:
                     for (Mascota m : listaMascotas) {
-                        System.out.println("Número Mascota: " + listaMascotas.indexOf(m) + " --- DATOS: " + m.toString());
+                        System.out.println("Nï¿½mero Mascota: " + listaMascotas.indexOf(m) + " --- DATOS: " + m.toString());
                     }
                     break;
                 case 5:
