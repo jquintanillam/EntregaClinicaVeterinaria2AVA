@@ -6,7 +6,7 @@ import java.io.Serializable;
 *
 * @author Jesus
 */
-public class Mascota extends Animales implements Serializable{
+public class Mascota extends Animal implements Serializable{
 
 	private String nombre;
     private Persona duenyo;
