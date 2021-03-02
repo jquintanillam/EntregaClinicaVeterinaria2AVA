@@ -12,6 +12,7 @@ import gestion.*;
 public class ClinicaVeterinaria {
 
     private static final String EXCEPCIONENTERO = "Has causado una excepci�n porque no has entrado un n�mero entero, gracias";
+	private static final String PRUEBA = null;
 
 	/**
      * @param args the command line arguments
@@ -60,7 +61,7 @@ public class ClinicaVeterinaria {
             String nomCliente = "Introduce el nombre";
 			switch (numero) {
                 case 1:
-				altaCliente(teclado, clientes, nomCliente);
+				altaCliente(teclado, clientes, nomCliente, PRUEBA);
                     break;
 
                 case 2:
@@ -174,7 +175,7 @@ public class ClinicaVeterinaria {
 		            System.err.println(EXCEPCIONENTERO);
 		            return;
 		        }
-		        m1 = new Cosita(ID, nombre, edad, raza, p2, gradosalvaje);
+		        m1 = new Gato(ID, nombre, edad, raza, p2, gradosalvaje);
 		        break;
 		    default:
 		        m1 = new Mascota(ID, nombre, edad, raza, p2);
@@ -183,7 +184,7 @@ public class ClinicaVeterinaria {
 		listaMascotas.add(m1);
 	}
 
-	private static void altaCliente(BufferedReader teclado, ArrayList<Persona> clientes, String nomCliente)
+	private static int altaCliente(BufferedReader teclado, ArrayList<Persona> clientes, String nomCliente, String newParam)
 			throws IOException {
 		//CLIENTE NUEVO
 		System.out.println("INTRODUCIMOS EL CLIENTE");
@@ -199,10 +200,11 @@ public class ClinicaVeterinaria {
 		    edad = Integer.parseInt(teclado.readLine());
 		} catch (Exception e) {
 		    System.err.println(EXCEPCIONENTERO);
-		    return;
+		    return edad;
 		}
 		Persona p1 = new Persona(nombre, apellidos, dni, edad);
 		clientes.add(p1);
+		return edad;
 	}
 
 	private static void muestraMenu() {
