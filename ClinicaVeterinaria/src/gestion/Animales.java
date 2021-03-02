@@ -2,13 +2,13 @@ package gestion;
 
 import java.io.Serializable;
 
-public class Animal {
+public class Animales {
 
 	private long ID;
 	protected int edad;
 	protected String raza;
 
-	public Animal() {
+	public Animales() {
 		super();
 	}
 
@@ -36,13 +36,11 @@ public class Animal {
 		this.ID = iD;
 	}
 
-	@Override
 	public boolean repira() {
 		//aqu� vendr�a el c�digo para la respiraci�n
 		return true;
 	}
 
-	@Override
 	public boolean come(float cantidad) {
 		//aqu� vendr�a el c�digo para ver lo que comen
 		return true;

@@ -74,7 +74,7 @@ public class ClinicaVeterinaria {
                     }
                     break;
                 case 4:
-                    for (InterfazAnimal m : listaMascotas) {
+                    for (Mascota m : listaMascotas) {
                         System.out.println("N�mero Mascota: " + listaMascotas.indexOf(m) + " --- DATOS: " + m.toString());
                     }
                     break;
